@@ -1,0 +1,6 @@
+{
+  "appId": "com.danilocouto.v5diceroller",
+  "appName": "v5DiceRoller",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}
