@@ -1,12 +1,55 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="danger">
     <ion-title>
-      Ionic Blank
+      V5 Dice Roller
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  <div text-center> How many normal dices do you have?</div>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col size="3">
+        <ion-fab-button color="dark">
+          <ion-icon name="remove"></ion-icon>
+        </ion-fab-button>
+      </ion-col>
+      <ion-col size="3">
+        <div class="dice-amount">
+          1
+        </div>
+      </ion-col>
+      <ion-col size="3">
+        <ion-fab-button color="dark">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div text-center> How many hunger dices do you have?</div>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col size="3">
+        <ion-fab-button color="danger">
+          <ion-icon name="remove"></ion-icon>
+        </ion-fab-button>
+      </ion-col>
+      <ion-col size="3">
+        <div class="dice-amount">
+          1
+        </div>
+      </ion-col>
+      <ion-col size="3">
+        <ion-fab-button color="danger">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger">
+      <ion-icon name="cube"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
