@@ -10,45 +10,49 @@
   <div text-center> How many normal dices do you have?</div>
   <ion-grid>
     <ion-row justify-content-center>
-      <ion-col size="3">
-        <ion-fab-button color="dark">
-          <ion-icon name="remove"></ion-icon>
-        </ion-fab-button>
-      </ion-col>
-      <ion-col size="3">
-        <div class="dice-amount">
-          1
+      <ion-col text-center>
+        <div class="center">
+          <ion-fab-button color="dark" (click)="decrescentNormalDiceCount()">
+            <ion-icon name="remove"></ion-icon>
+          </ion-fab-button>
         </div>
       </ion-col>
-      <ion-col size="3">
-        <ion-fab-button color="dark">
-          <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
+      <ion-col>
+        <div class="dice-amount">
+          {{ normalDiceCount }}
+        </div>
+      </ion-col>
+      <ion-col text-center>
+        <div class="center">
+          <ion-fab-button color="dark" (click)="addNormalDiceCount()">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
   <div text-center> How many hunger dices do you have?</div>
   <ion-grid>
     <ion-row justify-content-center>
-      <ion-col size="3">
-        <ion-fab-button color="danger">
+      <ion-col text-center>
+        <ion-fab-button color="danger" (click)="decrescentHungerDiceCount()">
           <ion-icon name="remove"></ion-icon>
         </ion-fab-button>
       </ion-col>
-      <ion-col size="3">
+      <ion-col>
         <div class="dice-amount">
-          1
+          {{ hungerDiceCount }}
         </div>
       </ion-col>
-      <ion-col size="3">
-        <ion-fab-button color="danger">
+      <ion-col text-center>
+        <ion-fab-button color="danger" (click)="addHungerDiceCount()">
           <ion-icon name="add"></ion-icon>
         </ion-fab-button>
       </ion-col>
     </ion-row>
   </ion-grid>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="danger">
+    <ion-fab-button color="danger" (click)="presentModal()">
       <ion-icon name="cube"></ion-icon>
     </ion-fab-button>
   </ion-fab>
