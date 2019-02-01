@@ -5,8 +5,7 @@ import { RollDetailPage } from '../roll-detail/roll-detail.page';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
-  //entryComponents: [RollDetailPage]
+  styleUrls: ['home.page.scss']
 })
 export class HomePage {
   normalDiceCount : number = 0;
@@ -26,11 +25,7 @@ export class HomePage {
     }
   }
   addHungerDiceCount(){
-    if( (this.hungerDiceCount + 1 ) > 5 ){
-      this.hungerDiceCount = 5;
-    }else{
-      this.hungerDiceCount++;
-    }
+    this.hungerDiceCount++;
   }
   decrescentHungerDiceCount(){
     if( (this.hungerDiceCount - 1) < 0 ){
@@ -42,7 +37,7 @@ export class HomePage {
   async presentModal() {
     const modal = await this.modalController.create({
       component: RollDetailPage,
-      componentProps: {  }//normalDiceCount: this.normalDiceCount, hungerDiceCount: this.hungerDiceCount, switchOverlapDice: this.switchOverlapDice
+      componentProps: { normalDiceCount: this.normalDiceCount, hungerDiceCount: this.hungerDiceCount, switchOverlapDice: this.switchOverlapDice  }
     });
     return await modal.present();
   }
