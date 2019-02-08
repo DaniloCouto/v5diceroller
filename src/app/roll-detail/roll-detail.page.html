@@ -14,15 +14,21 @@
     {{ rollSuccess ? "Success!" : "Fail!"}}
   </h1>
   <h2 class="fail" text-center>{{ messyCritical ? "Messy Critical!" : ( bestialFail ? "Beastial Fail!": "") }}</h2>
+  <div text-center> You needed {{successNeeded}} and you rolled {{ numberOfSucesses }}</div>
   <div text-center> Normal dice Results</div>
   <ion-grid>
-    <ion-row>
+    <ion-row *ngIf="!willpowerActive">
       <ion-col *ngFor="let value of normalDicesResults">
         <span class="normal-die" [ngClass]="rollClass(value)">{{value}}</span>
       </ion-col>
     </ion-row>
+    <ion-row *ngIf="willpowerActive">
+      <ion-col *ngFor="let value of normalDicesResults; let i = index">
+        <span [ngClass]="selectDiceClass(i)" (click)="selectNormalDiceForReroll(i)">{{value}}</span>
+      </ion-col>
+    </ion-row>
   </ion-grid>
-  <div text-center> Hunger dice Results</div>
+  <div text-center *ngIf="hungerDicesResults.length > 0"> Hunger dice Results</div>
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let value of hungerDicesResults">
@@ -30,4 +36,12 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-button color="dark" *ngIf="!willpowerActive" (click)="useWillpower()">
+    <ion-icon slot="start" name="cube"></ion-icon>
+    Use Willpower!
+  </ion-button>
+  <ion-button color="danger" *ngIf="willpowerActive" [disabled]="selectedDices.length == 0" (click)="reroll()">
+    <ion-icon slot="start" name="cube"></ion-icon>
+    Reroll Selected Dices
+  </ion-button>
 </ion-content>

@@ -18,6 +18,8 @@ export class RollDetailPage implements OnInit {
   rollSuccess : boolean = false;  
   messyCritical : boolean = false;
   bestialFail : boolean = false;
+  willpowerActive : boolean = false;
+  selectedDices : Array<number> = [];
 
   constructor(public modalController: ModalController, private platform: Platform) {
     // componentProps can also be accessed at construction time using NavParams
@@ -62,20 +64,34 @@ export class RollDetailPage implements OnInit {
       }else if ( randomResult >=6 ){
         this.numberOfSucesses++; 
       }else if ( randomResult == 1 ){
-        possibleBeastialFail = true;
+        hungerBeastFailCount++;
       }
     }
     this.numberOfSucesses += Math.floor( criticalCount  / 2) * 2;
     this.rollSuccess = (this.numberOfSucesses >= this.successNeeded);
     this.messyCritical = (possibleMessyCrit && criticalCount >= 2 && this.rollSuccess);
-    this.bestialFail = (!this.rollSuccess && possibleBeastialFail);
+    this.bestialFail = (!this.rollSuccess && hungerBeastFailCount > 1);
+  }
 
-    console.log('Normal Dice Results:', this.normalDicesResults);
-    console.log('Hunger Dice Results:', this.hungerDicesResults);
-    console.log('Sucesses:', this.numberOfSucesses);
-    console.log('Messy Critical?:', this.messyCritical);
-    console.log('bestialFail:', this.bestialFail);
+  useWillpower(){
+    this.willpowerActive = true;
+  }
+
+  selectNormalDiceForReroll(index : number){
     
+    let indexOfDice = this.selectedDices.indexOf(index);
+    if(this.selectedDices.length < 3 ){
+      if(indexOfDice > -1){
+        this.selectedDices.splice(indexOfDice, 1);
+      }else{
+        this.selectedDices.push(index);
+      }
+    }else{
+      if(indexOfDice > -1){
+        this.selectedDices.splice(indexOfDice, 1);
+      }
+    }
+    console.log('dice index array after', this.selectedDices)
   }
 
   rollClass(value : number){
@@ -89,8 +105,57 @@ export class RollDetailPage implements OnInit {
     return 'normal-success';
   }
 
+  selectDiceClass( index: number){
+    if(this.selectedDices.length <= 3 && this.willpowerActive){
+      if( this.selectedDices.indexOf(index) != -1){
+        return 'dice-selected';
+      }
+      return 'dice-selectable';
+    }
+  }
+
+  reroll(){
+    this.numberOfSucesses = 0;
+    this.messyCritical = false;
+    this.bestialFail= false;
+
+    let possibleMessyCrit = false;
+    let criticalCount = 0;
+    let possibleBeastialFail = false;
+    let hungerBeastFailCount = 0;
+
+    this.selectedDices.forEach(index => {
+      let randomResult = Math.floor(Math.random() * Math.floor(10))+1;
+      this.normalDicesResults[index] = randomResult;
+    });
+    this.normalDicesResults.forEach(result => {
+      this.numberOfSucesses += (result >=6 ) ? 1 : 0;
+      if(result == 10 ){
+        criticalCount++;
+      }
+    });
+    this.hungerDicesResults.forEach(result => {
+      if( result === 10){
+        this.numberOfSucesses++;
+        possibleMessyCrit = true;
+        if(result == 10 ){
+          criticalCount++;
+        }
+      }else if ( result >=6 ){
+        this.numberOfSucesses++; 
+      }else if ( result == 1 ){
+        hungerBeastFailCount++;
+      }
+    });
+    this.numberOfSucesses += Math.floor( criticalCount  / 2) * 2;
+    this.rollSuccess = (this.numberOfSucesses >= this.successNeeded);
+    this.messyCritical = (possibleMessyCrit && criticalCount >= 2 && this.rollSuccess);
+    this.bestialFail = (!this.rollSuccess && hungerBeastFailCount > 1);
+    this.willpowerActive = false;
+    this.selectedDices = [];
+  }
+
   ngOnInit() {
-    console.log('Open Modal:', this.normalDiceCount, this.hungerDiceCount, this.switchOverlapDice);
     this.roll();    
   }
 

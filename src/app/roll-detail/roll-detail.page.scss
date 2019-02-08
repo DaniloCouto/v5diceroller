@@ -1,6 +1,6 @@
 .success{
     color: var(--ion-color-dark);
-    text-shadow: 1px 1px #777;
+    text-shadow: 1px 1px #888;
     font-weight: bold;
     &.hunger-die{
         color: var(--ion-color-danger); 
@@ -8,10 +8,10 @@
 }
 .fail{
     color: var(--ion-color-danger);
-    text-shadow: 1px 1px #777;
+    text-shadow: 1px 1px #888;
     font-weight: bold;
     &.normal-die{
-        color: #777;
+        color: #888;
         font-weight: normal;
         text-shadow: unset;
     }
@@ -21,4 +21,18 @@
 }
 .normal-success{
     color: #000;
+}
+.dice-selected{
+    background-color: var(--ion-color-dark);
+    color: #FFF;
+    border: 1px var(--ion-color-dark);
+    border-radius: 2px;
+    padding: 5px;
+}
+.dice-selectable{
+    background-color: #FFF;
+    color: var(--ion-color-dark);
+    border: 1px var(--ion-color-dark);
+    border-radius: 2px;
+    padding: 5px;
 }
