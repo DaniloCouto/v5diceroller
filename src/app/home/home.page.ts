@@ -8,9 +8,10 @@ import { RollDetailPage } from '../roll-detail/roll-detail.page';
   styleUrls: ['home.page.scss']
 })
 export class HomePage {
-  normalDiceCount : number = 0;
+  normalDiceCount : number = 1;
   hungerDiceCount : number = 0;
   switchOverlapDice : boolean = true;
+  successNeeded : number = 1;
 
   constructor(public modalController: ModalController) {}
 
@@ -18,10 +19,20 @@ export class HomePage {
     this.normalDiceCount++;
   }
   decrescentNormalDiceCount(){
-    if( (this.normalDiceCount - 1) < 0 ){
-      this.normalDiceCount = 0;
+    if( (this.normalDiceCount - 1) < 1 ){
+      this.normalDiceCount = 1;
     }else{
       this.normalDiceCount--;
+    }
+  }
+  addSuccessNeeded(){
+    this.successNeeded++;
+  }
+  decrescentSuccessNeeded(){
+    if( (this.successNeeded - 1) < 1 ){
+      this.successNeeded = 1;
+    }else{
+      this.successNeeded--;
     }
   }
   addHungerDiceCount(){
@@ -37,7 +48,7 @@ export class HomePage {
   async presentModal() {
     const modal = await this.modalController.create({
       component: RollDetailPage,
-      componentProps: { normalDiceCount: this.normalDiceCount, hungerDiceCount: this.hungerDiceCount, switchOverlapDice: this.switchOverlapDice  }
+      componentProps: { normalDiceCount: this.normalDiceCount, hungerDiceCount: this.hungerDiceCount, switchOverlapDice: this.switchOverlapDice, successNeeded: this.successNeeded  }
     });
     return await modal.present();
   }

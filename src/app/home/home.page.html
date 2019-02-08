@@ -57,6 +57,26 @@
       <ion-toggle [(ngModel)]="switchOverlapDice" color="danger" slot="end"></ion-toggle>
     </ion-item>
   </ion-list>
+  <div text-center> How many successes do you need?</div>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col text-center>
+        <ion-fab-button color="dark" (click)="decrescentSuccessNeeded()">
+          <ion-icon name="remove"></ion-icon>
+        </ion-fab-button>
+      </ion-col>
+      <ion-col>
+        <div class="dice-amount">
+          {{ successNeeded }}
+        </div>
+      </ion-col>
+      <ion-col text-center>
+        <ion-fab-button color="dark" (click)="addSuccessNeeded()">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="danger" (click)="presentModal()">
       <ion-icon name="cube"></ion-icon>
