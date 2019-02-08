@@ -10,15 +10,15 @@
 </ion-header>
 
 <ion-content padding>
-  <h1 text-center [ngClass]="{'success': rollSuccess, 'fail': !rollSuccess}">
+  <h1 text-center [ngClass]="{'success': rollSuccess, 'fail': !rollSuccess }">
     {{ rollSuccess ? "Success!" : "Fail!"}}
   </h1>
-  <h2 color="danger" text-center>{{ messyCritical ? "Messy Critical!" : ( bestialFail ? "Beastial Fail!": "") }}</h2>
+  <h2 class="fail" text-center>{{ messyCritical ? "Messy Critical!" : ( bestialFail ? "Beastial Fail!": "") }}</h2>
   <div text-center> Normal dice Results</div>
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let value of normalDicesResults">
-        {{value}}
+        <span class="normal-die" [ngClass]="rollClass(value)">{{value}}</span>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -26,7 +26,7 @@
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let value of hungerDicesResults">
-        {{value}}
+        <span class="hunger-die" [ngClass]="rollClass(value)">{{value}}</span>
       </ion-col>
     </ion-row>
   </ion-grid>

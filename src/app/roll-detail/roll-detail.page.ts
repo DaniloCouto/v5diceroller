@@ -78,6 +78,17 @@ export class RollDetailPage implements OnInit {
     
   }
 
+  rollClass(value : number){
+    if(value === 1){
+      return 'fail';
+    }else if( value === 10){
+      return 'success';
+    }else if( value < 6){
+      return 'normal-fail';
+    }
+    return 'normal-success';
+  }
+
   ngOnInit() {
     console.log('Open Modal:', this.normalDiceCount, this.hungerDiceCount, this.switchOverlapDice);
     this.roll();    

@@ -1,8 +1,24 @@
 .success{
-    color: var(--dark-color);
+    color: var(--ion-color-dark);
+    text-shadow: 1px 1px #777;
     font-weight: bold;
+    &.hunger-die{
+        color: var(--ion-color-danger); 
+    }
 }
 .fail{
-    color: var(--danger-color);
+    color: var(--ion-color-danger);
+    text-shadow: 1px 1px #777;
     font-weight: bold;
+    &.normal-die{
+        color: #777;
+        font-weight: normal;
+        text-shadow: unset;
+    }
+}
+.normal-fail{
+    color: #777;
+}
+.normal-success{
+    color: #000;
 }
