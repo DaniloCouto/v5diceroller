@@ -4,8 +4,8 @@
   "theme_color": "#222222",
   "background_color": "#fafafa",
   "display": "standalone",
-  "scope": "/v5diceroller/*",
-  "start_url": "/v5diceroller/home",
+  "scope": "v5diceroller/",
+  "start_url": "/v5diceroller/index.html",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
