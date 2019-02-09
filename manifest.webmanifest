@@ -4,7 +4,7 @@
   "theme_color": "#222222",
   "background_color": "#fafafa",
   "display": "standalone",
-  "scope": "/v5diceroller/*",
+  "scope": "/*",
   "start_url": "/v5diceroller/home",
   "icons": [
     {
