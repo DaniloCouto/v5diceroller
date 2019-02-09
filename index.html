@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8"/>
   <title>V5 Dice Roller</title>
-
+  
   <base href="https://danilocouto.github.io/v5diceroller/">
 
   <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
@@ -16,6 +16,7 @@
   <!-- add to homescreen for ios -->
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <link rel="canonical" href="https://danilocouto.github.io/v5diceroller/" />
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#222222">
 <link rel="stylesheet" href="styles.e630339482df0fdc5b96.css"></head>
@@ -23,6 +24,14 @@
 <body>
   <app-root></app-root>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
+  <script>
+      // register ServiceWorker, remember to use absolute path!
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker.register('/v5diceroller/sw.js', {scope: '/v5diceroller/'})
+      }
+      
+      // --- Application code here ---
+      </script>
 <script type="text/javascript" src="runtime.8a1e6fac35d343beed7c.js"></script><script type="text/javascript" src="polyfills.24e87a3030fd6ee8b68e.js"></script><script type="text/javascript" src="main.db276820f113d2ec331c.js"></script></body>
 
 </html>
